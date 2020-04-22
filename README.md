@@ -23,13 +23,16 @@ pip install -r reqiurements.txt
 3. Check if Python 3 is installed
 ```bash
 python3 -V
+pip3 -V
 ```
 4. If it returns 3.8.x or above then, write following command 
-
+```bash
+chmod +x geckodriver
+```
+then
 ```bash
 pip3 install -r reqiurements.txt
 ```
-
 ## Usage
 On Windows write following command
 ```python
