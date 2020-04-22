@@ -71,13 +71,19 @@ def downloadImages(id):
     count=1
     for d in data:
         driver.get(d[0])
-        element = driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div/article/div[1]/div/div/div[1]/img').screenshot_as_png
-        im = Image.open(BytesIO(element))
-        im.save('Pic '+str(count)+' of '+name+'.png')
-        count+=1
+        try:
+            element = driver.find_element_by_xpath('/html/body/div[1]/section/main/div/div/article/div[1]/div/div/div[1]/img').screenshot_as_png
+            im = Image.open(BytesIO(element))
+            im.save('Pic '+str(count)+' of '+name+'.png')
+            count+=1
+        except:
+            pass
 
-getUserName()
-verifyaccount(name)
-datas=fetch(links, touch)
-downloadImages(datas)
+try:
+    getUserName()
+    verifyaccount(name)
+    datas=fetch(links, touch)
+    downloadImages(datas)
+except:
+    print('Some error occured.')
 driver.close()
