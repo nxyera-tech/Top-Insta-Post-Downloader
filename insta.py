@@ -1,11 +1,18 @@
 from selenium import webdriver
 from PIL import Image
 from io import BytesIO
-import time, re, math, pandas as pd
+import time, re, math, os, pandas as pd
 
 name, count, touch = '', 0, 0
 links = []
-driver = webdriver.Firefox(executable_path='C:\\Users\shubh\Desktop\geckodriver.exe')
+try:
+    if os.name=='nt':
+        cwd=os.getcwd()+'\geckodriver.exe'
+    else:
+        cwd = os.getcwd() + '/geckodriver'
+except:
+    print('Operating System not supported by this python script.')
+driver = webdriver.Firefox(executable_path=cwd)
 driver.minimize_window()
 
 
